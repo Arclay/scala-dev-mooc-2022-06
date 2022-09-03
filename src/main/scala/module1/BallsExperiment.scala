@@ -2,15 +2,18 @@ package module1
 import scala.util.Random
 
 class BallsExperiment {
-  def isFirstBlackSecondWhite(list: List[Boolean]): Boolean = {
-    val shuffledList = Random.shuffle(list)
-    if (shuffledList.head == false) {
-      if (Random.shuffle(shuffledList.tail).head == true)
-        true
-      else
-        false
-    } else
-      false
+
+  def isFirstBlackSecondWhite(): Boolean = {
+    val urn = List(true, true, true, false, false, false) //true - белый, false - чёрный
+    val shuffledList = Random.shuffle(urn)
+    (shuffledList.head) match {
+      case false =>
+        (shuffledList.tail.head) match {
+          case true => true
+          case _ => false
+        }
+      case _ => false
+    }
   }
 
 }
